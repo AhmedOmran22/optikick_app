@@ -7,6 +7,7 @@ import 'player_metric_repo.dart';
 
 class PlayerMetricRepoImpl implements PlayerMetricRepo {
   final Dio dio = Dio();
+
   @override
   Future<GraphDataModel> getPlayerMetric({
     required String mericType,
@@ -15,13 +16,14 @@ class PlayerMetricRepoImpl implements PlayerMetricRepo {
     String? periodString = period == null ? null : "?period=$period";
     try {
       final response = await dio.get(
-        "${EndPoint.metricDetails}/$mericType$periodString",
+        "${EndPoint.baseUrl}${EndPoint.metricDetails}/$mericType$periodString",
         options: Options(
           headers: {
             'Authorization': 'Bearer ${ApiKey.bearerToken}',
           },
         ),
       );
+      log(response.data.toString());
       return GraphDataModel.fromJson(response.data["data"]);
     } on Exception catch (e) {
       log(e.toString());
