@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:optikick/core/utils/colors.dart';
 import 'package:optikick/features/request%20an%20assesment/presentation/cubits/approve_assesment_cubit/approve_assesment_cubit.dart';
 import 'package:optikick/features/request%20an%20assesment/presentation/cubits/approve_assesment_cubit/approve_assesmet_states.dart';
 import 'package:optikick/features/request%20an%20assesment/presentation/views/reschedule_assesment_view.dart';
@@ -36,13 +37,14 @@ class AssesmentActionButtons extends StatelessWidget {
           ).show();
         }
         if (state is ApproveAssesmetLoading) {
-          AwesomeDialog(
+          showDialog(
             context: context,
-            dialogType: DialogType.info,
-            animType: AnimType.topSlide,
-            title: 'Loading',
-            desc: 'Please wait',
-          ).show();
+            builder: (_) => Center(
+              child: CircularProgressIndicator(
+                color: ColorsManager.realGreyColor,
+              ),
+            ),
+          );
         }
       },
       child: Row(

@@ -223,13 +223,14 @@ class _RescheduleAssesmentViewState extends State<RescheduleAssesmentView> {
                         ).show();
                       }
                       if (state is ApproveAssesmetLoading) {
-                        AwesomeDialog(
+                        showDialog(
                           context: context,
-                          dialogType: DialogType.info,
-                          animType: AnimType.topSlide,
-                          title: 'Loading',
-                          desc: 'Please wait',
-                        ).show();
+                          builder: (_) => Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsManager.realGreyColor,
+                            ),
+                          ),
+                        );
                       }
                     },
                     child: Padding(

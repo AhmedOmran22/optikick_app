@@ -71,14 +71,14 @@ class _SubmitNewAssesmentRequestState extends State<SubmitNewAssesmentRequest> {
                   ).show();
                 }
                 if (state is RequestAssesmentLoading) {
-                  AwesomeDialog(
+                  showDialog(
                     context: context,
-                    dialogType: DialogType.info,
-                    animType: AnimType.topSlide,
-                    title: 'Loading',
-                    desc: 'Please wait',
-                    btnOkOnPress: () {},
-                  ).show();
+                    builder: (_) => Center(
+                      child: CircularProgressIndicator(
+                        color: ColorsManager.realGreyColor,
+                      ),
+                    ),
+                  );
                 }
               },
               child: Stack(
@@ -128,12 +128,16 @@ class _SubmitNewAssesmentRequestState extends State<SubmitNewAssesmentRequest> {
                               children: [
                                 _sectionLabel("Issue Type"),
                                 DropdownButtonFormField(
+                                  style: TextStyle(color: Colors.white),
                                   value: selectedIssueType,
-                                  decoration: _inputDecoration(
-                                    'Select an issue type',
+                                  decoration: _inputDecoration(null),
+                                  hint: Text(
+                                    "Select an issue type",
+                                    style: TextStyle(
+                                      color: Colors.white.withAlpha(128),
+                                    ),
                                   ),
                                   dropdownColor: Colors.black,
-                                  style: const TextStyle(color: Colors.white),
                                   items: ['Muscle pain', 'Injury', 'Fatigue']
                                       .map((item) => DropdownMenuItem(
                                             value: item,
@@ -308,12 +312,16 @@ class _SubmitNewAssesmentRequestState extends State<SubmitNewAssesmentRequest> {
     );
   }
 
-  InputDecoration _inputDecoration(String hint) {
+  InputDecoration _inputDecoration(String? hint) {
     return InputDecoration(
       contentPadding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
       hintText: hint,
       hintStyle: TextStyle(
         color: Colors.white.withAlpha(128),
+        fontSize: 14.sp,
+      ),
+      labelStyle: TextStyle(
+        color: Colors.white,
         fontSize: 14.sp,
       ),
       filled: true,
