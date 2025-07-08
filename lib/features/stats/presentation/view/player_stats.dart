@@ -100,9 +100,11 @@ class _PlayerStatsState extends State<PlayerStats> {
 
             if (metric == null) {
               return Center(
-                child: Text("No metrics available.",
-                    style: TextStyle(
-                        color: ColorsManager.realWhiteColor, fontSize: 16.sp)),
+                child: Text(
+                  "No metrics available.",
+                  style: TextStyle(
+                      color: ColorsManager.realWhiteColor, fontSize: 16.sp),
+                ),
               );
             }
             return SingleChildScrollView(

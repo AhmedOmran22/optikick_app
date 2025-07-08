@@ -5,6 +5,7 @@ import '../models/graph_data_model.dart';
 abstract class PlayerMetricRepo {
   Future<GraphDataModel> getPlayerMetric({
     required String mericType,
-     String? period,
+    String? period,
   });
+ 
 }

@@ -44,7 +44,9 @@ class AuthCubit extends Cubit<AuthState> {
           ApiKey.identifier: logInEmailField.text.toUpperCase(),
           ApiKey.password: logInPasswordField.text,
         });
+
         logInModel = LogInModel.fromJson(response);
+        
         CacheHelper.storeData(key: ApiKey.token, value: logInModel!.token);
         CacheHelper.storeData(key: ApiKey.role, value: logInModel!.role);
         CacheHelper.storeData(key: ApiKey.userId, value: logInModel!.id);

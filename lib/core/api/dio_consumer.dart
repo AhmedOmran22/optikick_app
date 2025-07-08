@@ -10,14 +10,16 @@ class DioConsumer extends ApiConsumer {
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoint.baseUrl;
     dio.interceptors.add(ApiInterceptor());
-    dio.interceptors.add(LogInterceptor(
-      request: true,
-      requestHeader: true,
-      requestBody: true,
-      responseHeader: true,
-      responseBody: true,
-      error: true,
-    ));
+    dio.interceptors.add(
+      LogInterceptor(
+        request: true,
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: true,
+        responseBody: true,
+        error: true,
+      ),
+    );
   }
 
   @override
@@ -44,13 +46,20 @@ class DioConsumer extends ApiConsumer {
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
+    String? token,
   }) async {
     try {
       final response = await dio.get(
         path,
         data: data,
         queryParameters: queryParameters,
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        ),
       );
+
       return response.data;
     } on DioException catch (e) {
       handleDioExceptions(e);

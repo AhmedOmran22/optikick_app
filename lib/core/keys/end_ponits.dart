@@ -52,6 +52,8 @@ class EndPoint {
 
 //? To define the keys APIs
 class ApiKey {
+  static const String bearerToken = "282|9g6TizCg70DdxzFYWQAwyVQBoQmZIHYgWP0dWH1E59b14c1ca";
+  static const String playerToken = "player_token";
   static const String identifier = "identifier";
   static const String password = "password";
   static const String confirmPassword = "password_confirmation";
