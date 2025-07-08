@@ -21,6 +21,7 @@ class EndPoint {
   static const String approveAssessment = "/approve";
   static const String reschdule = "/reschedule";
   static const String requestAssessment = "player/assessments/request";
+  static const String metric = "player/metrics/details";
   static String notfiMarkAsRead(notificationID) {
     return "notifications/$notificationID/mark-as-read";
   }

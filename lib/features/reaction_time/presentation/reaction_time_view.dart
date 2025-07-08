@@ -105,19 +105,7 @@ class ReactionTimeView extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     ),
-                                    const Divider(
-                                      color: Color.fromARGB(255, 145, 145, 145),
-                                      thickness: 0.5,
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      'The Day 3 peak (430+ ms) vs. Day 7 drop (410- ms) suggests fatigue, training, or focus impact. Variations hint at external factors like sleep, cognitive load, or consistency. Final improvement may be due to adaptation or better training routines.',
-                                      style: TextStyle(
-                                        fontSize: 10.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
+                                    
                                   ],
                                 ),
                               ),

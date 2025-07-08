@@ -61,15 +61,12 @@ class CustomCurveChart extends StatelessWidget {
                       .toList(),
                 ),
                 const SizedBox(width: 8),
-                // Chart area
                 Expanded(
                   child: Stack(
                     children: [
-                      // Background grid
                       CustomPaint(
                         painter: ChartGridPainter(),
                       ),
-                      // Curve line
                       LineChart(
                         LineChartData(
                           gridData: FlGridData(show: false),
