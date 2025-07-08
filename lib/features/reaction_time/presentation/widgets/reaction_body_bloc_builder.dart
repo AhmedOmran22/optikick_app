@@ -86,6 +86,10 @@ class ReactionBodyBlocBuilder extends StatelessWidget {
                 SizedBox(
                   height: 12,
                 ),
+                Text(
+                  state.graphDataModel.period!,
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                )
               ],
             ),
           );

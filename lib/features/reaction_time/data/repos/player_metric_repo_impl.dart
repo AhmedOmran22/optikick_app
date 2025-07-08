@@ -20,7 +20,7 @@ class PlayerMetricRepoImpl implements PlayerMetricRepo {
     String? periodString = period == null ? null : "?period=$period";
     try {
       final response = await apiConsumer
-          .get("${EndPoint.metricDetails}/$mericType?$periodString");
+          .get("${EndPoint.metricDetails}/$mericType$periodString");
       return GraphDataModel.fromJson(response["data"]);
     } on Exception catch (e) {
       log(e.toString());

@@ -18,7 +18,7 @@ class ReactionTimeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          MetricCubit()..getPlayerMetric(mericType: metricType),
+          MetricCubit()..getPlayerMetric(mericType: metricType, period: "D"),
       child: Builder(builder: (context) {
         return Scaffold(
           body: ReactionViewBody(
