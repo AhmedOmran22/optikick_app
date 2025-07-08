@@ -1,6 +1,3 @@
-// 1. Updated PlayerStats model with API fetch
-// 2. Updated StatsView to fetch players dynamically
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:optikick/core/api/api_consumer.dart';
@@ -84,45 +81,46 @@ class _StatsViewState extends State<StatsView> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                  child: CircularProgressIndicator(
-                color: Color.fromARGB(255, 97, 103, 87),
-              ));
+                child: CircularProgressIndicator(
+                  color: Color.fromARGB(255, 97, 103, 87),
+                ),
+              );
             } else if (snapshot.hasError) {
               return Center(child: Text("Error: ${snapshot.error}"));
             }
 
             final players = snapshot.data!.players;
 
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: players.map((player) {
-                  return Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => PlayerStats(
-                                api: widget.api,
-                                playerId: player.id,
-                                playerName: player.name,
-                              ),
-                            ),
-                          );
-                        },
-                        child: StatsInfoItem(
-                          position: player.position,
-                          title: player.name,
-                          statusValue: player.status,
+            return ListView.separated(
+              physics: BouncingScrollPhysics(),
+              padding: EdgeInsets.all(12),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => PlayerStats(
+                          api: widget.api,
+                          playerId: players[index].id,
+                          playerName: players[index].name,
                         ),
                       ),
-                      SizedBox(height: 18.h),
-                    ],
-                  );
-                }).toList(),
-              ),
+                    );
+                  },
+                  child: StatsInfoItem(
+                    position: players[index].position,
+                    title: players[index].name,
+                    statusValue: players[index].status,
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(
+                  height: 18.h,
+                );
+              },
+              itemCount: players.length,
             );
           },
         ),
