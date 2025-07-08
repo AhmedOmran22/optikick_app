@@ -15,11 +15,12 @@ class PlayerMetricRepoImpl implements PlayerMetricRepo {
   @override
   Future<GraphDataModel> getPlayerMetric({
     required String mericType,
-    required int period,
+    String? period,
   }) async {
+    String? periodString = period == null ? null : "?period=$period";
     try {
       final response = await apiConsumer
-          .get("${EndPoint.metricDetails}/$mericType?period=$period");
+          .get("${EndPoint.metricDetails}/$mericType?$periodString");
       return GraphDataModel.fromJson(response["data"]);
     } on Exception catch (e) {
       log(e.toString());

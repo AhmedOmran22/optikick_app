@@ -8,8 +8,8 @@ class MetricCubitInitial extends MetricCubitState {}
 class MetricCubitLoading extends MetricCubitState {}
 
 class MetricCubitLoaded extends MetricCubitState {
-  final GraphDataModel playerMetricModel;
-  MetricCubitLoaded({required this.playerMetricModel});
+  final GraphDataModel graphDataModel;
+  MetricCubitLoaded({required this.graphDataModel});
 }
 
 class MetricCubitError extends MetricCubitState {

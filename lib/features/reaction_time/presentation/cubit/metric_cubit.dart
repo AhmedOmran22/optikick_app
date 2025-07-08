@@ -10,7 +10,7 @@ class MetricCubit extends Cubit<MetricCubitState> {
   final PlayerMetricRepo _playerMetricRepo = PlayerMetricRepoImpl();
   Future<void> getPlayerMetric({
     required String mericType,
-    required int period,
+    String? period,
   }) async {
     emit(MetricCubitLoading());
     try {
@@ -18,7 +18,7 @@ class MetricCubit extends Cubit<MetricCubitState> {
         mericType: mericType,
         period: period,
       );
-      emit(MetricCubitLoaded(playerMetricModel: playerMetric));
+      emit(MetricCubitLoaded(graphDataModel: playerMetric));
     } on ApiException catch (e) {
       emit(MetricCubitError(errorMessage: e.errModel.message.toString()));
     } catch (e) {

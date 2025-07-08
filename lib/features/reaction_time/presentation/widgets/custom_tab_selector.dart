@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomTabSelector extends StatefulWidget {
-  const CustomTabSelector({super.key});
-
+  const CustomTabSelector({super.key, required this.onTabSelected});
+  final ValueChanged<String> onTabSelected;
   @override
   // ignore: library_private_types_in_public_api
   _CustomTabSelectorState createState() => _CustomTabSelectorState();
@@ -10,7 +10,7 @@ class CustomTabSelector extends StatefulWidget {
 
 class _CustomTabSelectorState extends State<CustomTabSelector> {
   int selectedIndex = 0;
-
+  
   final List<String> tabs = ['D', 'W', 'M', '6M'];
 
   @override
@@ -37,6 +37,7 @@ class _CustomTabSelectorState extends State<CustomTabSelector> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
+            widget.onTabSelected(tabs[index]);
             setState(() {
               selectedIndex = index;
             });
