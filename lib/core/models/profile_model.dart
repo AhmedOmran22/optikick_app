@@ -21,8 +21,8 @@ class ProfileModel {
       this.email});
 
   ProfileModel.fromJson(Map<String, dynamic> json) {
-    firstName = json[ApiKey.firstName] ;
-    lastName = json[ApiKey.lastName] ;
+    firstName = json[ApiKey.firstName];
+    lastName = json[ApiKey.lastName];
     dateOfBirth = json[ApiKey.dateOfBirth];
     sex = json[ApiKey.sex];
     status = json[ApiKey.status];

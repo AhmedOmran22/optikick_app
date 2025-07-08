@@ -72,10 +72,8 @@ class CustomDrawer extends StatelessWidget {
               icon: Symbols.vital_signs,
               onTap: () {
                 CacheHelper.getData(key: ApiKey.isPlayer)
-                    ? Navigator.pushNamed(
-                        context, RoutesName.playerStats)
-                    : Navigator.pushNamed(
-                        context, RoutesName.stats);
+                    ? Navigator.pushNamed(context, RoutesName.playerStats)
+                    : Navigator.pushNamed(context, RoutesName.stats);
               },
             ),
             SidebarTile(
@@ -83,17 +81,13 @@ class CustomDrawer extends StatelessWidget {
               icon: Icons.assignment_outlined,
               onTap: () {
                 CacheHelper.getData(key: ApiKey.isPlayer)
-                    ? Navigator.pushNamed(
-                        context, RoutesName.playerView)
-                    : Navigator.pushNamed(
-                        context, RoutesName.trainingProgram);
+                    ? Navigator.pushNamed(context, RoutesName.playerView)
+                    : Navigator.pushNamed(context, RoutesName.trainingProgram);
               },
             ),
-            CacheHelper.getData(key: ApiKey.role) !=
-                    ApiKey.coachRole
+            CacheHelper.getData(key: ApiKey.role) != ApiKey.coachRole
                 ? SidebarTile(
-                    title: CacheHelper.getData(
-                            key: ApiKey.isPlayer)
+                    title: CacheHelper.getData(key: ApiKey.isPlayer)
                         ? 'Request an Assessment'
                         : 'Assessment Requests', //?view to players and doctor only
                     icon: Symbols.stethoscope,
@@ -101,14 +95,12 @@ class CustomDrawer extends StatelessWidget {
                     onTap: () {
                       if (CacheHelper.getData(key: ApiKey.role) ==
                           ApiKey.playerRole) {
-                        Navigator.pushNamed(context,
-                            RoutesName.submitNewAssesmentRequest);
+                        Navigator.pushNamed(
+                            context, RoutesName.submitNewAssesmentRequest);
                       } // as PLayerView;
                       else {
                         Navigator.pushNamed(
-                            context,
-                            RoutesName
-                                .viewAllAssessmentRequests); 
+                            context, RoutesName.viewAllAssessmentRequests);
                       }
                     },
                   )
@@ -130,8 +122,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               title: const Text(
                 'Settings & Privacy',
-                style: TextStyle(
-                    color: ColorsManager.realWhiteColor),
+                style: TextStyle(color: ColorsManager.realWhiteColor),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -144,8 +135,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               title: const Text(
                 'Help Centre',
-                style: TextStyle(
-                    color: ColorsManager.realWhiteColor),
+                style: TextStyle(color: ColorsManager.realWhiteColor),
               ),
               onTap: () {
                 Navigator.pop(context);
@@ -158,8 +148,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               title: const Text(
                 'Log Out',
-                style: TextStyle(
-                    color: ColorsManager.realWhiteColor),
+                style: TextStyle(color: ColorsManager.realWhiteColor),
               ),
               onTap: () {
                 // Handle logout

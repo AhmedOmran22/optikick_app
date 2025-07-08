@@ -24,7 +24,8 @@ final List<InfoCardModel> infoCards = [
   InfoCardModel(
     imagePath: 'assets/images/vits.png',
     title: 'Understanding Your Vitals',
-    description: 'Certain metrics can give you a sense of how the body is doing.',
+    description:
+        'Certain metrics can give you a sense of how the body is doing.',
   ),
   InfoCardModel(
     imagePath: 'assets/images/sleep.png',

@@ -8,7 +8,7 @@ class PlayerItem extends StatelessWidget {
     super.key,
     required this.title,
     this.toDo,
-    this.height = 110, 
+    this.height = 110,
   });
 
   final String title;

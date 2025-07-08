@@ -113,4 +113,4 @@ class DioConsumer extends ApiConsumer {
       handleDioExceptions(e);
     }
   }
-}//class
+} //class

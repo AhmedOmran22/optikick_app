@@ -26,7 +26,6 @@ class MessageItem extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) => ChatView(
               userName: name,
-              
             ),
           ),
         );

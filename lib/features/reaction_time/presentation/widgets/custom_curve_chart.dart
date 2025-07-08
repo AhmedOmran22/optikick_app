@@ -1,22 +1,26 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:optikick/features/reaction_time/data/models/graph_data_model.dart';
+
+import '../../data/models/graph_statstics_model.dart';
 
 class CustomCurveChart extends StatelessWidget {
-  final List<double> values = [420, 415, 435, 425, 415, 415, 405];
-  final List<String> days = [
-    '    Sat',
-    'Sun',
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri'
-  ];
+  final GraphDataModel graphDataModel;
 
-  CustomCurveChart({super.key});
+  const CustomCurveChart({super.key, required this.graphDataModel});
 
   @override
   Widget build(BuildContext context) {
+    final List<GraphStasticsModel> graphData = graphDataModel.graphData ?? [];
+
+    final List<double> values = graphData
+        .map((e) => (e.value is num) ? (e.value as num).toDouble() : 0.0)
+        .toList();
+
+    final List<String> days = graphData
+        .map((e) => e.date != null ? e.date!.substring(0, 3) : '')
+        .toList();
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -32,7 +36,7 @@ class CustomCurveChart extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Colors.black.withAlpha(25),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -41,24 +45,14 @@ class CustomCurveChart extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Y-axis labels
           SizedBox(
             height: 200,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Y-axis numbers
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [440, 430, 420, 410, 400]
-                      .map((nu) => Text(
-                            nu.toString(),
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Color.fromARGB(255, 255, 255, 255),
-                            ),
-                          ))
-                      .toList(),
+                  children: _generateYAxisLabels(values),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
@@ -75,14 +69,14 @@ class CustomCurveChart extends StatelessWidget {
                               sideTitles: SideTitles(
                                 showTitles: true,
                                 getTitlesWidget: (value, meta) {
+                                  final index = value.toInt();
                                   return Padding(
                                     padding: const EdgeInsets.only(top: 8.0),
                                     child: Text(
-                                      days[value.toInt()],
+                                      index < days.length ? days[index] : '',
                                       style: const TextStyle(
                                         fontSize: 12,
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
+                                        color: Colors.white,
                                       ),
                                     ),
                                   );
@@ -102,9 +96,13 @@ class CustomCurveChart extends StatelessWidget {
                           ),
                           borderData: FlBorderData(show: false),
                           minX: 0,
-                          maxX: 6,
-                          minY: 390,
-                          maxY: 440,
+                          maxX: (values.length - 1).toDouble(),
+                          minY: values.isNotEmpty
+                              ? values.reduce((a, b) => a < b ? a : b) - 5
+                              : 0,
+                          maxY: values.isNotEmpty
+                              ? values.reduce((a, b) => a > b ? a : b) + 5
+                              : 100,
                           lineBarsData: [
                             LineChartBarData(
                               spots: values.asMap().entries.map((entry) {
@@ -115,8 +113,7 @@ class CustomCurveChart extends StatelessWidget {
                               color: const Color.fromARGB(255, 229, 194, 132),
                               barWidth: 3,
                               isStrokeCapRound: true,
-                              dotData:
-                                  FlDotData(show: false), // Dots disabled here
+                              dotData: FlDotData(show: false),
                               belowBarData: BarAreaData(show: false),
                             ),
                           ],
@@ -132,17 +129,33 @@ class CustomCurveChart extends StatelessWidget {
       ),
     );
   }
+
+  List<Widget> _generateYAxisLabels(List<double> values) {
+    if (values.isEmpty) return [];
+    final double min = values.reduce((a, b) => a < b ? a : b);
+    final double max = values.reduce((a, b) => a > b ? a : b);
+    final step = ((max - min) / 4).clamp(1, double.infinity);
+    return List.generate(5, (i) {
+      final val = (max - (step * i)).toStringAsFixed(0);
+      return Text(
+        val,
+        style: const TextStyle(
+          fontSize: 12,
+          color: Colors.white,
+        ),
+      );
+    });
+  }
 }
 
 class ChartGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.grey.withValues(alpha: 0.2)
+      ..color = Colors.grey.withAlpha(50)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
 
-    // Draw horizontal grid lines
     final yStep = size.height / 4;
     for (var i = 0; i <= 4; i++) {
       final y = i * yStep;

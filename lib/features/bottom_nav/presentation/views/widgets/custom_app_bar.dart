@@ -59,9 +59,7 @@ class CustomAppBar extends StatelessWidget {
                     size: 30,
                   ),
                   tooltip: 'settings',
-                  onPressed: () {
-                  
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),

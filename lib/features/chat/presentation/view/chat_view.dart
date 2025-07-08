@@ -6,7 +6,7 @@ import 'package:optikick/core/widgets/gradient_background.dart';
 
 // ignore: must_be_immutable
 class ChatView extends StatelessWidget {
-   ChatView({super.key,required this.userName});
+  ChatView({super.key, required this.userName});
   String userName;
 
   @override

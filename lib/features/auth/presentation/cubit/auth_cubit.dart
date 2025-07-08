@@ -48,10 +48,10 @@ class AuthCubit extends Cubit<AuthState> {
         CacheHelper.storeData(key: ApiKey.token, value: logInModel!.token);
         CacheHelper.storeData(key: ApiKey.role, value: logInModel!.role);
         CacheHelper.storeData(key: ApiKey.userId, value: logInModel!.id);
-        CacheHelper
-            .storeData(key: ApiKey.firstName, value: logInModel!.firstName);
-        CacheHelper
-            .storeData(key: ApiKey.lastName, value: logInModel!.lastName);
+        CacheHelper.storeData(
+            key: ApiKey.firstName, value: logInModel!.firstName);
+        CacheHelper.storeData(
+            key: ApiKey.lastName, value: logInModel!.lastName);
         CacheHelper.storeData(key: ApiKey.email, value: logInEmailField.text);
         bool isDoctor =
             CacheHelper.getData(key: ApiKey.role) == ApiKey.doctorRole;
@@ -67,7 +67,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(LogInFailure(errMessage: e.errModel.message));
       }
     }
-  } 
+  }
 
   forgetPassword() async {
     if (forgotPasswordEmailField.text.isEmpty) {

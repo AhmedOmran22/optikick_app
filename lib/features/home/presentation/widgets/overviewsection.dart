@@ -31,7 +31,7 @@ class OverviewSection extends StatelessWidget {
             ),
           );
         }
-        },
+      },
       builder: (context, state) {
         return state is DashLoading
             ? Center(

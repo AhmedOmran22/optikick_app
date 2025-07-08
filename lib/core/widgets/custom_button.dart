@@ -59,7 +59,6 @@ class CustomButton extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
-      
             child: Stack(
               alignment: Alignment.center,
               children: [

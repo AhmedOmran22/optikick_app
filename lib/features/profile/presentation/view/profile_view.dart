@@ -10,8 +10,7 @@ import 'package:optikick/features/profile/presentation/widgets/info_item.dart';
 // ignore: must_be_immutable
 class ProfileView extends StatelessWidget {
   ProfileView({super.key});
-  bool isNotPlayer =
-      CacheHelper.getData(key: ApiKey.role) != ApiKey.playerRole;
+  bool isNotPlayer = CacheHelper.getData(key: ApiKey.role) != ApiKey.playerRole;
 
   bool isDoctor = CacheHelper.getData(key: ApiKey.role) == ApiKey.doctorRole;
   bool isCoach = CacheHelper.getData(key: ApiKey.role) == ApiKey.coachRole;

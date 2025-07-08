@@ -105,7 +105,6 @@ class _PlayerStatsState extends State<PlayerStats> {
                         color: ColorsManager.realWhiteColor, fontSize: 16.sp)),
               );
             }
-
             return SingleChildScrollView(
               padding: const EdgeInsets.all(10),
               child: Column(
@@ -115,7 +114,9 @@ class _PlayerStatsState extends State<PlayerStats> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ReactionTimeView(),
+                          builder: (context) => ReactionTimeView(
+                            metricType: "resting_hr",
+                          ),
                         ),
                       );
                     },
@@ -132,7 +133,9 @@ class _PlayerStatsState extends State<PlayerStats> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ReactionTimeView(),
+                          builder: (context) => ReactionTimeView(
+                            metricType: "max_hr",
+                          ),
                         ),
                       );
                     },
@@ -149,7 +152,9 @@ class _PlayerStatsState extends State<PlayerStats> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ReactionTimeView(),
+                          builder: (context) => ReactionTimeView(
+                            metricType: "hrv",
+                          ),
                         ),
                       );
                     },
@@ -166,7 +171,9 @@ class _PlayerStatsState extends State<PlayerStats> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ReactionTimeView(),
+                          builder: (context) => ReactionTimeView(
+                            metricType: "vo2_max",
+                          ),
                         ),
                       );
                     },
@@ -183,7 +190,9 @@ class _PlayerStatsState extends State<PlayerStats> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ReactionTimeView(),
+                          builder: (context) => ReactionTimeView(
+                            metricType: "weight",
+                          ),
                         ),
                       );
                     },
@@ -200,7 +209,9 @@ class _PlayerStatsState extends State<PlayerStats> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ReactionTimeView(),
+                          builder: (context) => ReactionTimeView(
+                            metricType: "resting_hr",
+                          ),
                         ),
                       );
                     },

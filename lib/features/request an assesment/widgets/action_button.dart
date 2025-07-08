@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +5,8 @@ class ActionButton extends StatelessWidget {
   final String text;
   final Color backgroundColor;
   final Color textColor;
-  const ActionButton({super.key, 
+  const ActionButton({
+    super.key,
     required this.text,
     required this.backgroundColor,
     required this.textColor,

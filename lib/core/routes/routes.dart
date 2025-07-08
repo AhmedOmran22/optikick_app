@@ -1,4 +1,3 @@
-
 class RoutesName {
   static const splash = '/';
   static const onBoarding = '/onBoarding';
@@ -11,12 +10,12 @@ class RoutesName {
   static const stats = '/stats';
   static const playerView = '/PlayerView';
   static const forgetPasswordView = '/ForgetPasswordView';
-  static const  resetEmailView = '/ResetEmailView';
-  static const  newPasswordView = '/NewPasswordView';
+  static const resetEmailView = '/ResetEmailView';
+  static const newPasswordView = '/NewPasswordView';
   static const chatView = '/ChatView';
-  static const playerStats= '/playerStats';
+  static const playerStats = '/playerStats';
   static const reactionTimeView = '/reactionTimeView';
-  static const  viewAllAssessmentRequests = '/viewAllAssessmentRequests';
-  static const  assessmentRequestDetails = '/assessmentRequestDetails';
-  static const  otpView = '/otpView';
+  static const viewAllAssessmentRequests = '/viewAllAssessmentRequests';
+  static const assessmentRequestDetails = '/assessmentRequestDetails';
+  static const otpView = '/otpView';
 }

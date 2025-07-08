@@ -1,7 +1,9 @@
-import 'package:optikick/features/reaction_time/data/models/player_metric_model.dart';
+// import 'package:optikick/features/reaction_time/data/models/player_metric_model.dart';
+
+import '../models/graph_data_model.dart';
 
 abstract class PlayerMetricRepo {
-  Future<PlayerMetricModel> getPlayerMetric({
+  Future<GraphDataModel> getPlayerMetric({
     required String mericType,
     required int period,
   });

@@ -10,7 +10,7 @@ import 'package:optikick/features/player/widgets/player_item.dart';
 
 class PlayerView extends StatefulWidget {
   final ApiConsumer api;
-  final int? playerId; 
+  final int? playerId;
   final String? playerName;
 
   const PlayerView({
@@ -33,19 +33,16 @@ class _PlayerViewState extends State<PlayerView> {
     trainingProgramFuture = fetchTrainingProgram(widget.api);
   }
 
-  Future<TrainingProgram?> fetchTrainingProgram(
-      ApiConsumer api) async {
+  Future<TrainingProgram?> fetchTrainingProgram(ApiConsumer api) async {
     try {
       if (CacheHelper.getData(key: ApiKey.isPlayer)) {
-        final response =
-            await api.get(EndPoint.playerTrainingProgram);
+        final response = await api.get(EndPoint.playerTrainingProgram);
         final programJson = response['data']['program'];
         return TrainingProgram.fromJson(programJson);
       } else {
-        final endpoint =
-            CacheHelper.getData(key: ApiKey.isDoctor)
-                ? 'doctor/players/${widget.playerId}/program'
-                : 'coach/players/${widget.playerId}/program';
+        final endpoint = CacheHelper.getData(key: ApiKey.isDoctor)
+            ? 'doctor/players/${widget.playerId}/program'
+            : 'coach/players/${widget.playerId}/program';
         final response = await api.get(endpoint);
         final programJson = response['data']['program'];
         return programJson != null
@@ -116,8 +113,7 @@ class _PlayerViewState extends State<PlayerView> {
         body: FutureBuilder<TrainingProgram?>(
           future: trainingProgramFuture,
           builder: (context, snapshot) {
-            if (snapshot.connectionState ==
-                ConnectionState.waiting) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                   child: CircularProgressIndicator(
                       color: Color.fromARGB(255, 97, 103, 87)));
@@ -125,8 +121,7 @@ class _PlayerViewState extends State<PlayerView> {
               return Center(
                 child: Text(
                   'Error: ${snapshot.error}',
-                  style: TextStyle(
-                      color: Colors.red, fontSize: 16.sp),
+                  style: TextStyle(color: Colors.red, fontSize: 16.sp),
                 ),
               );
             }
@@ -149,8 +144,7 @@ class _PlayerViewState extends State<PlayerView> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  PlayerItem(
-                      title: 'Focus: ${program.focusArea}'),
+                  PlayerItem(title: 'Focus: ${program.focusArea}'),
                   SizedBox(height: 22.h),
                   ...program.exercises.map((e) {
                     final parts = e.split(":");

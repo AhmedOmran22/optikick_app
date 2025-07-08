@@ -21,7 +21,6 @@ class Player {
   }
 }
 
-
 class PlayersData {
   final List<Player> players;
 
@@ -34,7 +33,4 @@ class PlayersData {
           .toList(),
     );
   }
-
- 
 }
-

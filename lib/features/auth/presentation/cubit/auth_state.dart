@@ -23,14 +23,13 @@ final class ForgetPasswordSuccess extends AuthState {
   final ForgetPassModel forgetPassModel;
   ForgetPasswordSuccess({required this.forgetPassModel});
 }
+
 final class ForgetPasswordLoading extends AuthState {}
 
 final class ForgetPasswordFailure extends AuthState {
   final String errMessage;
   ForgetPasswordFailure({required this.errMessage});
 }
-
-
 
 //?  OTP Verification screen states:
 final class VerifyOTPSuccess extends AuthState {}
@@ -47,6 +46,7 @@ final class ResetPasswordSuccess extends AuthState {
   final String successMessage;
   ResetPasswordSuccess({required this.successMessage});
 }
+
 final class ResetPasswordLoading extends AuthState {}
 
 final class ResetPasswordFailure extends AuthState {

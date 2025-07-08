@@ -13,7 +13,6 @@ class PlayerMetric {
   }
 }
 
-
 class DashboardPlayerMetrics {
   final PlayerMetric restingHr;
   final PlayerMetric maxHr;

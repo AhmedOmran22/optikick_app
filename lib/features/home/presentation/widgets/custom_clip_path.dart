@@ -7,13 +7,13 @@ class MyClipperPath extends CustomClipper<Path> {
 
     Path path = Path()
       ..moveTo(0, 0)
-      ..lineTo(size.width, 0) 
+      ..lineTo(size.width, 0)
       ..lineTo(size.width, size.height * 0.85 - radius)
-      ..quadraticBezierTo(
-          size.width, size.height * 0.85, size.width - radius, size.height * 0.85)
+      ..quadraticBezierTo(size.width, size.height * 0.85, size.width - radius,
+          size.height * 0.85)
       ..lineTo(radius, size.height)
       ..quadraticBezierTo(0, size.height, 0, size.height - radius)
-      ..lineTo(0, 0) 
+      ..lineTo(0, 0)
       ..close();
 
     return path;

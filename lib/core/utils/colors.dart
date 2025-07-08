@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class ColorsManager{
+class ColorsManager {
   static const Color realWhiteColor = Color(0xFFFFFFFF);
   static const Color realBlackColor = Color(0xFF000000);
   static const Color realGreyColor = Color(0xFF808080);

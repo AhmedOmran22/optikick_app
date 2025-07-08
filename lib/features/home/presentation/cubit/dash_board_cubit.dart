@@ -11,7 +11,7 @@ part 'dash_board_state.dart';
 class DashBoardCubit extends Cubit<DashBoardState> {
   DashBoardCubit({required this.api}) : super(DashBoardInitial());
   ApiConsumer api;
-  
+
   DashboardPlayerMetrics? playerMetrics;
   AdminStatusOverview? adminOverview;
 
@@ -29,8 +29,9 @@ class DashBoardCubit extends Cubit<DashBoardState> {
   getAdminDashboard() async {
     emit(DashLoading());
     try {
-      final response =
-          await api.get(CacheHelper.getData(key: ApiKey.isDoctor) ? EndPoint.doctorDash : EndPoint.coachDash);
+      final response = await api.get(CacheHelper.getData(key: ApiKey.isDoctor)
+          ? EndPoint.doctorDash
+          : EndPoint.coachDash);
       adminOverview = AdminStatusOverview.fromJson(response);
       emit(DashSuccesss(dashBoardData: adminOverview!));
     } catch (e) {

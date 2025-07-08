@@ -1,7 +1,6 @@
 import 'package:optikick/core/keys/end_ponits.dart';
 
 class LogInModel {
-
   final String status;
   final String message;
   final String token;
@@ -24,7 +23,7 @@ class LogInModel {
       status: jsonData[ApiKey.status],
       message: jsonData[ApiKey.message],
       token: jsonData[ApiKey.data][ApiKey.token],
-      id: jsonData[ApiKey.data][ApiKey.user][ApiKey.id], 
+      id: jsonData[ApiKey.data][ApiKey.user][ApiKey.id],
       role: jsonData[ApiKey.data][ApiKey.user][ApiKey.role],
       firstName: jsonData[ApiKey.data][ApiKey.user][ApiKey.firstName],
       lastName: jsonData[ApiKey.data][ApiKey.user][ApiKey.lastName],

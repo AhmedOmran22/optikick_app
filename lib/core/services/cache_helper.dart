@@ -11,7 +11,8 @@ abstract class CacheHelper {
     return sharedPreferences.getString(key);
   }
 
-  static Future<bool> storeData({required String key, required dynamic value}) async {
+  static Future<bool> storeData(
+      {required String key, required dynamic value}) async {
     if (value is bool) {
       return await sharedPreferences.setBool(key, value);
     }
@@ -42,5 +43,4 @@ abstract class CacheHelper {
   static Future<bool> clearData({required String key}) async {
     return sharedPreferences.clear();
   }
-
 }

@@ -52,9 +52,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacementNamed(
-                          context,
-                          RoutesName.login
-                        );
+                            context, RoutesName.login);
                       },
                       child: Text(
                         'skip',
