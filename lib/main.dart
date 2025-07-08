@@ -8,14 +8,4 @@ Future<void> main() async {
 
   runApp(const OptikickApp());
 }
-// Player:
-// luisdiaz@gmail.com
-// luis6640
-// _______________________________
-// doctor:
-// jonathan@gmail.com
-// jonathan6640
-// ________________________________
-// coach:
-// arneslot@gmail.com
-// arne6640
+
