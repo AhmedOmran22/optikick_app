@@ -4,7 +4,7 @@ import 'package:optikick/core/api/api_consumer.dart';
 import 'package:optikick/core/keys/end_ponits.dart';
 import 'package:optikick/core/services/cache_helper.dart';
 import 'package:optikick/core/utils/colors.dart';
-import 'package:optikick/features/reaction_time/presentation/reaction_time_view.dart';
+import 'package:optikick/features/reaction_time/presentation/views/reaction_time_view.dart';
 import 'package:optikick/features/stats/presentation/view/widgets/player_stats_info.dart';
 
 class PlayerStats extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:optikick/features/reaction_time/presentation/data/models/player_metric_model.dart';
+import 'package:optikick/features/reaction_time/data/models/player_metric_model.dart';
 
-import '../../../../../core/api/api_consumer.dart';
-import '../../../../../core/api/dio_consumer.dart';
-import '../../../../../core/keys/end_ponits.dart';
+import '../../../../core/api/api_consumer.dart';
+import '../../../../core/api/dio_consumer.dart';
+import '../../../../core/keys/end_ponits.dart';
 import 'player_metric_repo.dart';
 
 class PlayerMetricRepoImpl implements PlayerMetricRepo {

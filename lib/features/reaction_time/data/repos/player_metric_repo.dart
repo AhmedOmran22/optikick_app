@@ -1,4 +1,4 @@
-import 'package:optikick/features/reaction_time/presentation/data/models/player_metric_model.dart';
+import 'package:optikick/features/reaction_time/data/models/player_metric_model.dart';
 
 abstract class PlayerMetricRepo {
   Future<PlayerMetricModel> getPlayerMetric({

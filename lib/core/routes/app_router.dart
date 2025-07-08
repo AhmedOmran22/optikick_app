@@ -15,7 +15,7 @@ import 'package:optikick/features/home/presentation/pages/home_page.dart';
 import 'package:optikick/features/on_boarding/presentation/view/onboarding.dart';
 import 'package:optikick/features/player/views/player_view.dart';
 import 'package:optikick/features/profile/presentation/view/profile_view.dart';
-import 'package:optikick/features/reaction_time/presentation/reaction_time_view.dart';
+import 'package:optikick/features/reaction_time/presentation/views/reaction_time_view.dart';
 import 'package:optikick/features/request%20an%20assesment/presentation/views/request_an_assessment_view.dart';
 import 'package:optikick/features/request%20an%20assesment/presentation/views/assesment_view.dart';
 import 'package:optikick/features/splash/presentation/view/splash_view.dart';
