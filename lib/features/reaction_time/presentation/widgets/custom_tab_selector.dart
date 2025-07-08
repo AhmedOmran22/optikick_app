@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomTabSelector extends StatefulWidget {
@@ -35,28 +34,36 @@ class _CustomTabSelectorState extends State<CustomTabSelector> {
         ),
       ),
       child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) => Container(
-                alignment: Alignment.center,
-                width: 50,
-                height: 50,
-                child: Text(
-                  tabs[index],
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: selectedIndex == index
-                        ? Colors.white
-                        : const Color.fromARGB(255, 145, 145, 145),
-                  ),
-                ),
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          child: Container(
+            alignment: Alignment.center,
+            width: 50,
+            height: 50,
+            child: Text(
+              tabs[index],
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: selectedIndex == index
+                    ? Colors.white
+                    : const Color.fromARGB(255, 145, 145, 145),
               ),
-          separatorBuilder: (context, index) => VerticalDivider(
-                color: Colors.white,
-                thickness: 1,
-                width: 1,
-              ),
-          itemCount: tabs.length),
+            ),
+          ),
+        ),
+        separatorBuilder: (context, index) => VerticalDivider(
+          color: Colors.white,
+          thickness: 1,
+          width: 1,
+        ),
+        itemCount: tabs.length,
+      ),
     );
   }
 }
