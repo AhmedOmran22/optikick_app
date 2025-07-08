@@ -53,8 +53,9 @@ class ReactionTimeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Align(
-                          alignment: Alignment.center,
-                          child: CustomTabSelector()),
+                        alignment: Alignment.center,
+                        child: CustomTabSelector(),
+                      ),
                       const SizedBox(height: 24),
                       CustomCurveChart(),
                       SizedBox(height: 30.h),

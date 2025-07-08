@@ -36,10 +36,9 @@ class _PlayerStatsState extends State<PlayerStats> {
         final response = await api.get(EndPoint.playerMetrics);
         return PlayerMetric.fromJson(response['data']['metric']);
       } else {
-        final response = await api.get(
-            CacheHelper.getData(key: ApiKey.isDoctor)
-                ? 'doctor/players/${widget.playerId}/metrics'
-                : 'coach/players/${widget.playerId}/metrics');
+        final response = await api.get(CacheHelper.getData(key: ApiKey.isDoctor)
+            ? 'doctor/players/${widget.playerId}/metrics'
+            : 'coach/players/${widget.playerId}/metrics');
         _playerName = response['data']['player']['name'];
         return PlayerMetric.fromJson(response['data']['metric']);
       }
@@ -111,47 +110,99 @@ class _PlayerStatsState extends State<PlayerStats> {
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
-                  PlayerStatsInfo(
-                    title: 'Resting Heart Rate',
-                    statusValue: metric.restingHr.value.toString(),
-                    statusValueType: metric.restingHr.unit,
-                    time: metric.restingHr.time,
-                  ),
-                  SizedBox(height: 14.h),
-                  PlayerStatsInfo(
-                    title: 'Max Heart Rate',
-                    statusValue: metric.maxHr.value.toString(),
-                    statusValueType: metric.maxHr.unit,
-                    time: metric.maxHr.time,
-                  ),
-                  SizedBox(height: 14.h),
-                  PlayerStatsInfo(
-                    title: 'HRV',
-                    statusValue: metric.hrv.value.toString(),
-                    statusValueType: metric.hrv.unit,
-                    time: metric.hrv.time,
-                  ),
-                  SizedBox(height: 14.h),
-                  PlayerStatsInfo(
-                    title: 'VO2 Max',
-                    statusValue: metric.vo2Max.value.toString(),
-                    statusValueType: metric.vo2Max.unit,
-                    time: metric.vo2Max.time,
-                  ),
-                  SizedBox(height: 14.h),
-                  PlayerStatsInfo(
-                    title: 'Weight',
-                    statusValue: metric.weight.value.toString(),
-                    statusValueType: metric.weight.unit,
-                    time: metric.weight.time,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReactionTimeView(),
+                        ),
+                      );
+                    },
+                    child: PlayerStatsInfo(
+                      title: 'Resting Heart Rate',
+                      statusValue: metric.restingHr.value.toString(),
+                      statusValueType: metric.restingHr.unit,
+                      time: metric.restingHr.time,
+                    ),
                   ),
                   SizedBox(height: 14.h),
                   InkWell(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ReactionTimeView()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReactionTimeView(),
+                        ),
+                      );
+                    },
+                    child: PlayerStatsInfo(
+                      title: 'Max Heart Rate',
+                      statusValue: metric.maxHr.value.toString(),
+                      statusValueType: metric.maxHr.unit,
+                      time: metric.maxHr.time,
+                    ),
+                  ),
+                  SizedBox(height: 14.h),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReactionTimeView(),
+                        ),
+                      );
+                    },
+                    child: PlayerStatsInfo(
+                      title: 'HRV',
+                      statusValue: metric.hrv.value.toString(),
+                      statusValueType: metric.hrv.unit,
+                      time: metric.hrv.time,
+                    ),
+                  ),
+                  SizedBox(height: 14.h),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReactionTimeView(),
+                        ),
+                      );
+                    },
+                    child: PlayerStatsInfo(
+                      title: 'VO2 Max',
+                      statusValue: metric.vo2Max.value.toString(),
+                      statusValueType: metric.vo2Max.unit,
+                      time: metric.vo2Max.time,
+                    ),
+                  ),
+                  SizedBox(height: 14.h),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReactionTimeView(),
+                        ),
+                      );
+                    },
+                    child: PlayerStatsInfo(
+                      title: 'Weight',
+                      statusValue: metric.weight.value.toString(),
+                      statusValueType: metric.weight.unit,
+                      time: metric.weight.time,
+                    ),
+                  ),
+                  SizedBox(height: 14.h),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReactionTimeView(),
+                        ),
+                      );
                     },
                     child: PlayerStatsInfo(
                       title: 'Reaction Time',
