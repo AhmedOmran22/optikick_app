@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cubit/metric_cubit.dart';
 
 class CustomTabSelector extends StatefulWidget {
-  const CustomTabSelector({super.key, required this.onTabSelected});
-  final ValueChanged<String> onTabSelected;
-  @override
+  const CustomTabSelector({
+    super.key,
+    required this.mericType,
+  });
+  final String mericType;
   // ignore: library_private_types_in_public_api
+  @override
   _CustomTabSelectorState createState() => _CustomTabSelectorState();
 }
 
 class _CustomTabSelectorState extends State<CustomTabSelector> {
   int selectedIndex = 0;
-  
+
   final List<String> tabs = ['D', 'W', 'M', '6M'];
 
   @override
@@ -37,7 +43,10 @@ class _CustomTabSelectorState extends State<CustomTabSelector> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
-            widget.onTabSelected(tabs[index]);
+            context.read<MetricCubit>().getPlayerMetric(
+                  mericType: widget.mericType,
+                  period: tabs[index],
+                );
             setState(() {
               selectedIndex = index;
             });
